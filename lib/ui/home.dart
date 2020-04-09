@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:penjualan_voucher/ui/inputpenjualan.dart';
 import 'package:penjualan_voucher/models/penjualan.dart';
 import 'package:penjualan_voucher/helpers/dbhelper.dart';
@@ -68,10 +69,18 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            trailing: GestureDetector(
-              child: Icon(Icons.delete),
-              onTap: () {
+            trailing: IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
                 deletePenjualan(penjualanList[index]);
+                Fluttertoast.showToast(
+                    msg: "Daftar Telah Dihapus.",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.blue,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
               },
             ),
             onTap: () async {
